@@ -16,7 +16,7 @@
   <modules>
       <module><%=props.service%></module>
       <module><%=props.serviceFeature%></module>
-      <!--module>build</module-->
+      <module>build</module>
   </modules>
 
 

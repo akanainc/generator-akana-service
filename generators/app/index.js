@@ -122,11 +122,11 @@ module.exports = yeoman.Base.extend({
       this.template('README.md');
     },
 
-    //build: function(){
-    //  this.composeWith('akana-service:build-repository', {}, {
-    //    link: 'strong'
-    //  }) 
-    //},
+    build: function(){
+      this.composeWith('akana-service:build-repository', {}, {
+        link: 'strong'
+      }) 
+    },
 
     service: function(){
       this.composeWith('akana-service:service-runtime', {}, {
