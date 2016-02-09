@@ -1,6 +1,6 @@
 {
   "name": "generator-akana-service",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generator for writing a service/API for Akana Platform",
   "homepage": "https://www.github.com/akanainc/generator-akana-service",
   "author": {
@@ -32,9 +32,9 @@
     "validator": "3.x.x",
     "superheroes": "1.x.x"
   },
-  "devDependencies": {    
+  "devDependencies": {
     "mocha": "*"
-    },
+  },
   "scripts": {
     "test": "mocha"
   },
