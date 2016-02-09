@@ -7,7 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
-
+import com.digev.fw.exception.GException;
 import com.soa.documentation.annotation.Api;
 import com.soa.documentation.annotation.ApiOperation;
 import com.soa.documentation.annotation.ApiParameter;
@@ -26,13 +26,20 @@ description = "<%= props.description %>")
 @Path("/<%=props.component.toLowerCase()%>")
 public class <%= props.component %>Service implements NoSqlDBConstant{
 	
-	/**
-	 * @return timestamp
-	 */
-public String echo() throws GException {
-        if (this.baseQueryDao == null)
-            return "{\"hello\": \"no-nosql\"}";
+	private com.soa.persistence.dao.BaseDao baseQueryDao;
 
+    public void setBaseQueryDao(com.soa.persistence.dao.BaseDao baseQueryDao) {
+        this.baseQueryDao = baseQueryDao;
+    }
+
+
+
+    /**
+     * @return timestamp
+     */
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String echo() throws GException {
         try {
             baseQueryDao.getStats(SERVICE_DB_COLLECTION);
         } catch (com.mongodb.MongoCommandException mce) {

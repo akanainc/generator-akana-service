@@ -16,6 +16,7 @@ module.exports = yeoman.Base.extend({
     this.props.servicePath = servicePath;
     
     this.template(path.join('src/main/java','Service.java'), path.join(this.props.service, 'src/main/java', servicePath, this.props.component +'Service.java'));
+    this.template(path.join('src/main/java','NoSqlDBConstant.java'), path.join(this.props.service, 'src/main/java', servicePath, 'NoSqlDBConstant.java'));
     
     this.template(path.join('build', 'build.xml'), path.join(this.props.service, 'build', 'build.xml'), null, { 'interpolate': /<%=([\s\S]+?)%>/g });
     this.template(path.join('build', 'project.properties'), path.join(this.props.service, 'build', 'project.properties'), null, { 'interpolate': /<%=([\s\S]+?)%>/g });
