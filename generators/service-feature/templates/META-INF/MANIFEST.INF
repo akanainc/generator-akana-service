@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: <%=props.title%> Plugin for Policy Manager
+Bundle-Description: This feature must be installed in Policy Manager to provide support for the '<%=props.title%>'. <%=props.description%>.
+Bundle-SymbolicName: <%=props.serviceFeature%>
+Bundle-Category: x-soa-plugin
+Bundle-Version: <%=props.bundleVersion%>
+Bundle-Vendor: <%= props.author %> - <%= props.email %>
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ClassPath: .,
+ META-INF/resources/
+Require-Bundle: <%=props.service%>;bundle-version="<%=props.bundleVersion%>"
+Import-Package: com.digev.fw.exception;version="8.0.0",
+ com.soa.admin.service.tasks;version="8.0.0",
+ com.soa.admin.service.tasks.impl;version="8.0.0",
+ com.soa.admin.service.tasktemplate;version="8.0.0",
+ com.soa.admin.service.tasktemplate.impl;version="8.0.0",
+ com.soa.admin.task.spring;version="8.0.0"

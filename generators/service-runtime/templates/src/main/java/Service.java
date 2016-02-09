@@ -16,11 +16,11 @@ import com.soa.persistence.query.criteria.QueryCriteria;
 /**
  * Service Implementation
  *
- * @author <%= props.author %>
+ * @author <%= props.email %>
  *
  */
-@Api(title = "<%= props.component %>", 
-vendor = "Akana", 
+@Api(title = "<%= props.name %>", 
+vendor = "<%= props.author %> - <%= props.email %>", 
 version = "<%= props.bundleVersion %>", 
 description = "<%= props.description %>")
 @Path("/<%=props.component.toLowerCase()%>")

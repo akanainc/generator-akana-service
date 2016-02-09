@@ -132,13 +132,13 @@ module.exports = yeoman.Base.extend({
       this.composeWith('akana-service:service-runtime', {}, {
         link: 'strong'
       })
-    }    
+    },    
 
-    //feature: function(){
-    //  this.composeWith('akana-service:service-feature', {}, {
-    //    link: 'strong'
-    //  })
-    //}
+    feature: function(){
+      this.composeWith('akana-service:service-feature', {}, {
+        link: 'strong'
+      })
+    }
 
   },
   
