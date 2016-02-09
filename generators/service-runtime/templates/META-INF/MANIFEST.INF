@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: <%=props.title%> Runtime
+Bundle-SymbolicName: <%=props.service%>
+Bundle-Version: <%= props.bundleVersion %>
+Bundle-Vendor:  <%= props.author %> - <%= props.email %>
+Spring-Context: *;publish-context:=false
+Import-Package: com.digev.fw.config.osgi;version="8.1.0",
+ com.digev.fw.database;version="8.0.0",
+ com.digev.fw.exception;version="8.1.0",
+ com.digev.fw.log;version="8.1.0",
+ com.soa.documentation.annotation;version="8.0.0",
+ com.soa.fw.dao;version="8.0.0",
+ com.soa.fw.log;version="8.0.0",
+ com.soa.jaxrs.annotations;version="8.0.0",
+ com.soa.jaxrs.providers;version="8.0.0",
+ com.soa.persistence.query,
+ com.soa.persistence.query.criteria,
+ com.soa.persistence.query.util,
+ com.soa.security.session;version="8.1.0",
+ com.soa.security.util;version="8.1.0",
+ com.soa.uddi;version="8.0.0",
+ javax.security.auth,
+ javax.ws.rs;version="1.1.0",
+ javax.ws.rs.core;version="1.1.0",
+ javax.ws.rs.ext;version="1.1.0"

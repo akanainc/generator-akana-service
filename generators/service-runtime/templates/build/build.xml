@@ -1,0 +1,70 @@
+<project name="<%= props.component.toLowerCase() %>-runtime" default="all">
+	<property file="project.properties"/>
+	
+	<property name="bundle.file" value="${dist.dir}/<%=props.service%>_${bundle.version}.jar"/>
+	
+	<fileset id="third.party.jars" dir="${third.party.dir}">
+		<include name="*.jar"/>
+	</fileset>
+	
+	<!--fileset id="update.dependent.jars" dir="${lib.dir}">
+		<include name="${gateway.update.dir.name}/*.jar"/>
+	</fileset-->
+	
+	<fileset id="base.dependent.jars" dir="${lib.dir}">
+		<include name="${gateway.base.dir.name}/*.jar"/>
+	</fileset>
+	
+	<fileset id="akana.platform.jars" dir="${lib.dir}">
+		<include name="${akana.platform.dir.name}/*.jar"/>
+	</fileset>
+
+	<path id="base.classpath">
+		<!--fileset refid="update.dependent.jars"/-->
+		<fileset refid="akana.platform.jars"/>
+		<fileset refid="base.dependent.jars"/>
+		<fileset refid="third.party.jars"/>
+    </path>	
+	
+
+    <target name="all" description="Build it all." depends="bundle"/>
+	
+    <target name="clean" description="clean build artifacts" depends="init">
+        <delete dir="${classes.dir}"/>
+        <delete file="${bundle.file}"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="${classes.dir}"/>
+    </target>
+	
+	<target name="compile" depends="init">
+		<echo>compiling <%=props.service%></echo>
+		<javac source="${source.version}" bootclasspath="${boot.classpath}" destdir="${classes.dir}" debug="${javacdebug}" debuglevel="${debuglevel}" nowarn="${nowarn}" target="${compile.version}">
+   			<src path="${src.dir}"/>
+  			<include name="**/*.java"/>
+  			<classpath>
+  			    <path refid="base.classpath"/>
+  		 	</classpath>
+  		</javac>
+	</target>
+	
+	<target name="metatype" if="generate.metatype">
+		<echo message="Generate metatype:${generate.metatype}"/>
+		<metatype destdir="${metatype.dir}">
+			<configs dir="${config.dir}">
+				<include name="*.cfg"/>
+			</configs>
+		</metatype>
+	</target>
+
+	<target name="bundle" depends="compile, metatype">
+		<jar destfile="${bundle.file}" manifest="${root.dir}/META-INF/MANIFEST.MF">
+			<fileset dir="${classes.dir}" includes="**/*.class"/>
+			<fileset dir="${src.dir}" includes="**/*.properties"/>
+			<zipfileset dir="${spring.dir}" includes="*.*" prefix="META-INF/spring"/>
+			<!--zipfileset dir="${l10n.dir}" includes="**/*.*" prefix="OSGI-INF/l10n"/-->
+		</jar>
+	</target>	
+
+</project>
