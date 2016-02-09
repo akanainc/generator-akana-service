@@ -24,33 +24,26 @@ vendor = "<%= props.author %> - <%= props.email %>",
 version = "<%= props.bundleVersion %>", 
 description = "<%= props.description %>")
 @Path("/<%=props.component.toLowerCase()%>")
-public class <%= props.component %>Service {
+public class <%= props.component %>Service implements NoSqlDBConstant{
 	
 	/**
 	 * @return timestamp
 	 */
-	@GET
-	@Produces({ MediaType.TEXT_PLAIN})
-	public String echo() {
-		return "hello";
-	}
+public String echo() throws GException {
+        if (this.baseQueryDao == null)
+            return "{\"hello\": \"no-nosql\"}";
+
+        try {
+            baseQueryDao.getStats(SERVICE_DB_COLLECTION);
+        } catch (com.mongodb.MongoCommandException mce) {
+            baseQueryDao.createStore(SERVICE_DB_COLLECTION, null, null);
+        }
+
+        return baseQueryDao.getStats(SERVICE_DB_COLLECTION).toString();
+
+    }
+
 	
-	/**
-	 * 
-	 * Based on SecurityWrapper api should get access to login user, to construct list of possible constraints  
-	 * 
-	 * 
-	 * @return list of addition filter to be applied while executing Query
-	 */
-	/*
-	@GET
-	@Path("{domainName}/{userName}")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	@ApiOperation(summary="Get Data Filter Records", description="Get Data Records For user")
-	public QueryCriteria getFilters(
-			@ApiParameter(description="Domain Name.", required=true) @PathParam("domainName") String domainName,
-			@ApiParameter(description="User Name.", required=true) @PathParam("userName") String userName,
-			@Context UriInfo uris);
-	*/
+
 
 }

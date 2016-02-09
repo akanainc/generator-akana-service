@@ -16,6 +16,7 @@
 
   	<bean id="<%=props.namespace%>"  class="<%=props.namespace%>.<%=props.component%>Service">
 		<!--property name="target" ref="secure.cache"/-->
+		<property name="baseQueryDao" ref="nosql.basedao"/>
 	</bean>		
   							
 	<jaxrs:application id="<%=props.namespace%>.app" path="rest" 
@@ -24,6 +25,8 @@
 			<ref bean="<%=props.namespace%>"/>
 		</jaxrs:singletons>
 	</jaxrs:application>
+ 
+	<osgi:reference id="nosql.basedao" interface="com.soa.persistence.dao.BaseDao" cardinality="0..1"/>
 	
 	<!--uddi:service ref="<%=props.namespace%>.app" 
 			org="uddi:soa.com:managementconfigurationbusinesskey" 
