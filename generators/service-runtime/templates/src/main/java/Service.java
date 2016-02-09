@@ -19,7 +19,7 @@ import com.soa.persistence.query.criteria.QueryCriteria;
  * @author <%= props.email %>
  *
  */
-@Api(title = "<%= props.name %>", 
+@Api(title = "<%= props.title %>", 
 vendor = "<%= props.author %> - <%= props.email %>", 
 version = "<%= props.bundleVersion %>", 
 description = "<%= props.description %>")
@@ -30,8 +30,7 @@ public class <%= props.component %>Service {
 	 * @return timestamp
 	 */
 	@GET
-	@Path("/")
-	@Produces({ MediaType.APPLICATION_JSON})
+	@Produces({ MediaType.TEXT_PLAIN})
 	public String echo() {
 		return "hello";
 	}

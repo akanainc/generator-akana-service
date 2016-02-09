@@ -25,10 +25,10 @@
 		</jaxrs:singletons>
 	</jaxrs:application>
 	
-	<!--uddi:service ref="rest.data.record.filter.app" 
+	<!--uddi:service ref="<%=props.namespace%>.app" 
 			org="uddi:soa.com:managementconfigurationbusinesskey" 
 			key="uddi:soa.com:user-security-servicekey" 
-			name="User Security Service" version="1.0.0">
+			name="<%=props.title%>" version="<%= props.bundleVersion %>">
 		<uddi:policies>
 			<value>PolicyManagerDefaultConsoleHttpSecurityPolicy</value>
 		</uddi:policies>
