@@ -1,6 +1,6 @@
 {
   "name": "generator-akana-service",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generator for writing a service/API for Akana Platform",
   "homepage": "https://www.github.com/akanainc/generator-akana-service",
   "author": {
